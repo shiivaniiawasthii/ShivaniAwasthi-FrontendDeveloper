@@ -9,9 +9,7 @@ function FoodItemSection() {
         <FilterSection />
       </div>
 
-      <div className=" grid grid-cols-1 lg:grid-cols-4  md:grid-cols-2 gap-x-4 w-3/4 m-auto">
-        <GridCard />
-      </div>
+      <GridCard />
     </>
   );
 }

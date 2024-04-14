@@ -30,15 +30,20 @@ import React, { useState, useContext } from "react";
 import FoodCard from "./FoodCard";
 import Modal from "./Modal";
 import { DataContext } from "../Context/Context.js";
+import Pagination from "./Pagination.js";
 
 function GridCard() {
   const { data, loading } = useContext(DataContext);
   const [selectedMeal, setSelectedMeal] = useState(null); // State to track the selected meal
   const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
   const [mealDetails, setMealDetails] = useState(null); // State to store fetched meal details
+  // ppppppppppppppppppppppppppppppppppppppppppppp
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [mealsPerPage] = useState(6);
   const meals = data?.meals || [];
 
+  // -------------------------------------pag
   const openModal = async (meal) => {
     setSelectedMeal(meal); // Set the selected meal in state
     setIsModalOpen(true); // Open the modal
@@ -88,17 +93,34 @@ function GridCard() {
     return ingredientsParagraph;
   };
 
+  // Get current meals
+  const indexOfLastmeal = currentPage * mealsPerPage;
+  const indexOfFirstmeal = indexOfLastmeal - mealsPerPage;
+  const currentMeal = meals.slice(indexOfFirstmeal, indexOfLastmeal);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
-      {/* Render FoodCard components */}
-      {meals?.map((el) => (
-        <FoodCard
-          key={el.idMeal}
-          strMeal={el.strMeal}
-          strMealThumb={el.strMealThumb}
-          onClick={() => openModal(el)} // Pass onClick event handler to open modal with meal details
-        />
-      ))}
+      <div className="grid grid-cols-1 lg:grid-cols-4  md:grid-cols-2 gap-x-4 w-3/4 m-auto">
+        {currentMeal?.map((el) => (
+          <FoodCard
+            key={el.idMeal}
+            strMeal={el.strMeal}
+            strMealThumb={el.strMealThumb}
+            onClick={() => openModal(el)} // Pass onClick event handler to open modal with meal details
+          />
+        ))}
+      </div>
+      {/* pagination */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(meals.length / mealsPerPage)}
+        onPageChange={paginate}
+        length={meals.length}
+        mealsPerPage={mealsPerPage}
+      />
 
       {/* Render modal with selected meal details */}
       {mealDetails && (
