@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { DataContext, DataProvider } from "../Context/Context.js";
 import Button from "./Button";
+import { areas } from "./Area";
 
 const FilterSection = () => {
   const [openDropDown, setOpenDropDown] = useState(false);
@@ -37,6 +38,10 @@ const FilterSection = () => {
     updateSelectedSort(sort);
   };
 
+  const handleAreaChange = (area) => {
+    setSelectedArea(area);
+  };
+
   return (
     <>
       <DataProvider selectedArea={selectedArea} openDropDown={openDropDown}>
@@ -47,63 +52,28 @@ const FilterSection = () => {
           <Button onClick={handleDropdown}>Filter</Button>
           <div
             ref={dropdownRef}
-            className={`z-10 w-56 p-3  mt-3 shadow-lg bg-white  rounded-lg  absolute top-36 ${
+            className={`z-10 w-56 p-3  h-60 overflow-y-auto mt-3 shadow-lg bg-white  rounded-lg  absolute top-36 ${
               openDropDown ? "" : "hidden"
             }`}
           >
-            <ul
-              className="space-y-2 text-gray-500 p-4"
-              aria-labelledby="dropdownDefault"
-            >
-              <li className="flex items-center  p-2">
-                <input
-                  type="radio"
-                  name="area"
-                  value="Indian"
-                  checked={selectedArea === "Indian"}
-                  onChange={() => setSelectedArea("Indian")}
-                />
-                <label className="ml-2 text-sm font-medium font-2xl text-gray-900">
-                  Indian
-                </label>
-              </li>
-              <li className="flex items-center p-2">
-                <input
-                  type="radio"
-                  name="area"
-                  value="Canadian"
-                  checked={selectedArea === "Canadian"}
-                  onChange={() => setSelectedArea("Canadian")}
-                />
-                <label className="ml-2 text-sm font-medium text-gray-900">
-                  Canadian
-                </label>
-              </li>
-              <li className="flex items-center p-2">
-                <input
-                  type="radio"
-                  name="area"
-                  value="American"
-                  checked={selectedArea === "American"}
-                  onChange={() => setSelectedArea("American")}
-                />
-                <label className="ml-2 text-sm font-medium text-gray-900">
-                  American
-                </label>
-              </li>
-              <li className="flex items-center p-2">
-                <input
-                  type="radio"
-                  name="area"
-                  value="British"
-                  checked={selectedArea === "British"}
-                  onChange={() => setSelectedArea("British")}
-                />
-                <label className="ml-2 text-sm font-medium text-gray-900">
-                  British
-                </label>
-              </li>
+            <ul>
+              {" "}
+              {areas.map((area) => (
+                <li key={area} className="flex items-center p-2">
+                  <input
+                    type="radio"
+                    name="area"
+                    value={area}
+                    checked={selectedArea === area}
+                    onChange={() => handleAreaChange(area)}
+                  />
+                  <label className="ml-2 text-sm font-medium text-gray-900">
+                    {area}
+                  </label>
+                </li>
+              ))}
             </ul>
+
             <button
               className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded mt-4"
               onClick={handleApply}

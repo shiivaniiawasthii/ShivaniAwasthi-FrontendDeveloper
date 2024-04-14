@@ -6,8 +6,8 @@ const Pagination = ({ onPageChange, length, mealsPerPage }) => {
   };
 
   return (
-    <div className=" w-1/4 flex m-auto">
-      <ul className="pagination h-12  m-auto flex overflow-x-auto">
+    <div className=" w-1/4 flex m-auto ">
+      <ul className="pagination   m-auto flex overflow-x-auto">
         {Array.from({
           length: Math.ceil(length / mealsPerPage),
         }).map((_, index) => (

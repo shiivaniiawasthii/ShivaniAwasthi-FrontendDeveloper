@@ -1,31 +1,3 @@
-// import React, { useContext } from "react";
-
-// import FoodCard from "./FoodCard";
-// import { DataContext } from "../Context/Context.js";
-
-// function GridCard() {
-//   const { data, loading } = useContext(DataContext);
-
-//   const meals = data?.meals || [];
-
-//   if (loading) {
-//     return <div>Loading...</div>; // Display a loading indicator
-//   }
-//   console.log("data is final rendere");
-//   return (
-//     <>
-//       {meals?.map((el) => (
-//         <FoodCard
-//           key={el.idMeal}
-//           strMeal={el.strMeal}
-//           strMealThumb={el.strMealThumb}
-//         />
-//       ))}
-//     </>
-//   );
-// }
-
-// export default GridCard;
 import React, { useState, useContext } from "react";
 import FoodCard from "./FoodCard";
 import Modal from "./Modal";
@@ -37,13 +9,11 @@ function GridCard() {
   const [selectedMeal, setSelectedMeal] = useState(null); // State to track the selected meal
   const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
   const [mealDetails, setMealDetails] = useState(null); // State to store fetched meal details
-  // ppppppppppppppppppppppppppppppppppppppppppppp
 
   const [currentPage, setCurrentPage] = useState(1);
   const [mealsPerPage] = useState(6);
   const meals = data?.meals || [];
 
-  // -------------------------------------pag
   const openModal = async (meal) => {
     setSelectedMeal(meal); // Set the selected meal in state
     setIsModalOpen(true); // Open the modal
