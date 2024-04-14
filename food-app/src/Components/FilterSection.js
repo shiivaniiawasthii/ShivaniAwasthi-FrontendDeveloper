@@ -40,10 +40,10 @@ const FilterSection = () => {
   return (
     <>
       <DataProvider selectedArea={selectedArea} openDropDown={openDropDown}>
-        <div className="text-3xl font-bold ml-10 ">
+        <div className="text-3xl font-bold ml-2 lg:ml-1 mt-12 ">
           Restaurants with online food delivery in Pune
         </div>
-        <div className="flex justify-between w-5/6 ml-6 mt-6 ">
+        <div className="flex flex-wrap justify-even w-5/6 mt-6  ">
           <Button onClick={handleDropdown}>Filter</Button>
           <div
             ref={dropdownRef}
@@ -79,9 +79,33 @@ const FilterSection = () => {
                   Canadian
                 </label>
               </li>
+              <li className="flex items-center p-2">
+                <input
+                  type="radio"
+                  name="area"
+                  value="American"
+                  checked={selectedArea === "American"}
+                  onChange={() => setSelectedArea("American")}
+                />
+                <label className="ml-2 text-sm font-medium text-gray-900">
+                  American
+                </label>
+              </li>
+              <li className="flex items-center p-2">
+                <input
+                  type="radio"
+                  name="area"
+                  value="British"
+                  checked={selectedArea === "British"}
+                  onChange={() => setSelectedArea("British")}
+                />
+                <label className="ml-2 text-sm font-medium text-gray-900">
+                  British
+                </label>
+              </li>
             </ul>
             <button
-              className="bg-orange-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mt-4"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded mt-4"
               onClick={handleApply}
             >
               Apply
@@ -95,6 +119,8 @@ const FilterSection = () => {
           </Button>
           <Button>Food delievery</Button>
           <Button>New on swiggy</Button>
+          <Button>Most rated</Button>
+          <Button>less than 250 rs.</Button>
         </div>
       </DataProvider>
     </>
