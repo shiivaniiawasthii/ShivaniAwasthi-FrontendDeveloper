@@ -1,8 +1,8 @@
 import React from "react";
 
-function FoodCard({ strMealThumb, strMeal }) {
+function FoodCard({ strMealThumb, strMeal, onClick }) {
   return (
-    <div className=" m-auto mt-12">
+    <div className=" m-auto mt-12" onClick={onClick}>
       {" "}
       <img
         alt="foodimage"

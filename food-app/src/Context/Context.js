@@ -36,8 +36,6 @@ const DataProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("useeffecet for");
-    console.log(selectedSort, "selectedsort context me");
     if (selectedSort === "Lower to Upper") {
       const sortedData = [...data.meals].sort((a, b) => {
         return a.strMeal.localeCompare(b.strMeal);
@@ -51,7 +49,6 @@ const DataProvider = ({ children }) => {
     }
   }, [selectedSort]);
 
-  console.log(data, "data is rendered");
   return (
     <DataContext.Provider
       value={{ data, loading, updateSelectedArea, updateSelectedSort }}

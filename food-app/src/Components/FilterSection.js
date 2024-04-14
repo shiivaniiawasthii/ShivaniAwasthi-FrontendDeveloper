@@ -27,7 +27,6 @@ const FilterSection = () => {
   };
 
   const handleApply = () => {
-    console.log("clicking apply");
     updateSelectedArea(selectedArea);
     setOpenDropDown(false);
     // Close dropdown upon clicking apply button
@@ -36,7 +35,6 @@ const FilterSection = () => {
 
   const handleSorting = (sort) => {
     updateSelectedSort(sort);
-    console.log(sort, updateSelectedSort, "selected sort");
   };
 
   return (
