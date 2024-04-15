@@ -19,13 +19,12 @@
 
 ```
 
-### Install Dependencies
+
+### Install Dependencies 
 
 ```
-
 npm install
 cd food-app
-
 ```
 
 ### Run
@@ -33,6 +32,9 @@ cd food-app
 ```
 # Run frontend (:3000)
 npm run start
+
+
+```
 
 
 There is a vercel deployed , need to verify your mail id so you can run the deployed link.
