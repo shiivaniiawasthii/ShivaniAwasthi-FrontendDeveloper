@@ -14,6 +14,21 @@
 - Pagination
 - Responsiveness
 
+### Folder structure
+
+food-app
+│
+├── public/               # Public assets and index.html
+├── src/                  # Source code
+├── components/           # React components
+├── contexts/             # state management
+│   ├── styles/           # Tailwind CSS stylesheets
+│   ├── App.js            # Main application component
+│   └── index.js          # Entry point
+├── package.json          # npm package configuration
+
+
+
 ## Usage
 
 
